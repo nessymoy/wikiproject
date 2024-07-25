@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: amdaripassword
+      MYSQL_DATABASE: amdaridb
+      MYSQL_USER: amdariuser
+      MYSQL_PASSWORD: amdariuserpassword
+    volumes:
+      - mysqldb-volume:/var/lib/mysql
+    ports:
+      - 3307:3306
+
+
+
+# Use postgres/example user/password credentials
+
+
+  
+
+
+  postgresdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: amdaripassword
+      POSTGRES_DB: amdaridb  
+      POSTGRES_USER: amdariuser
+
+    volumes:
+      - postgresdb-volume:/var/lib/postgresql/data  
+
+    ports:
+      - "5435:5432"  
+
+
+
+volumes:
+      mysqldb-volume: {}
+      postgresdb-volume: {}
